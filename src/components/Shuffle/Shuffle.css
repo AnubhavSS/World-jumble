@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@6..144,1..1000&family=Press+Start+2P&display=swap');
+
+.shuffle-parent {
+  display: inline-block;
+  white-space: normal;
+  word-wrap: break-word;
+  will-change: transform;
+  line-height: 4rem;
+  font-size: 4rem;
+  font-family: 'Press Start 2P', sans-serif;
+  text-transform: uppercase;
+  visibility: hidden;
+  letter-spacing: 10px;
+}
+
+.shuffle-parent.is-ready {
+  visibility: visible;
+}
+
+.shuffle-char-wrapper {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: baseline;
+  position: relative;
+}
+
+.shuffle-char-wrapper > span {
+  display: inline-flex;
+  will-change: transform;
+}
+
+.shuffle-char {
+  line-height: 1;
+  display: inline-block;
+  text-align: center;
+}
