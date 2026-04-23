@@ -1,12 +1,13 @@
 import Home from './pages/Home'
-
+import {Switch,Route} from 'wouter'
+import Game from './pages/Game'
 function App() {
 
-
   return (
-    <>
-      <Home />
-    </>
+    <Switch>
+     <Route path="/" component={Home} />
+     <Route path="/game" component={Game} />
+    </Switch>
   )
 }
 

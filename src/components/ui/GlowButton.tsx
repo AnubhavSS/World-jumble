@@ -6,11 +6,13 @@ import { cn } from "../../lib/utils"
 type GlowButtonProps = {
   children: React.ReactNode
   className?: string
+  handleClick?: () => void
 } & React.ButtonHTMLAttributes<HTMLButtonElement>
 
 export const GlowButton = ({
   children,
   className,
+  handleClick,
   ...props
 }: GlowButtonProps) => {
   return (
@@ -28,6 +30,7 @@ export const GlowButton = ({
         "hover:scale-105 active:scale-95",
         className
       )}
+      onClick={handleClick}
       {...props}
     >
       {/* Glow Border */}
