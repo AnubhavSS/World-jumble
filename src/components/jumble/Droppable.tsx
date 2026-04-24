@@ -28,7 +28,9 @@ return valid ? (
     color="#9D4EDD"
     speed={0.1}
     chaos={0.07}
-    thickness={2}
+    thickness={2
+      
+    }
     style={{ borderRadius: 16 }}
   >
     {content}

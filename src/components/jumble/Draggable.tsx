@@ -1,10 +1,13 @@
 import {useDraggable} from '@dnd-kit/react';
+import { useStore } from '../../../store.ts';
 
 const Draggable = ({id}: {id: string}) => {
-
+     const timer = useStore((state) => state.timer)
+     console.log(timer)
      const { ref } = useDraggable({
     id,
     type: "letter", // ✅ IMPORTANT
+    disabled: timer,
   })
 
   return (
