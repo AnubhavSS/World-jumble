@@ -1,18 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import SpotlightCard from "../components/SpotlightCard/SpotlightCard.jsx";
 import { DragDropProvider } from "@dnd-kit/react";
 import Droppable from "../components/jumble/Droppable.js";
 import Draggable from "../components/jumble/Draggable.js";
 import { move } from "@dnd-kit/helpers";
-import { dropOrSwap } from "@formkit/drag-and-drop";
-import { useDragAndDrop } from "@formkit/drag-and-drop/react";
+
 
 const Game = () => {
   
-  
-
-    const [slots, setSlots] = useState(["", "", "", ""])
-  const [letters, setLetters] = useState(["U", "B", "A", "L"])
+      const [slots, setSlots] = useState(["", "", "", ""])
+  const [letters, setLetters] = useState(["M", "E", "H", "O"])
+  const answer = "HOME".split("")
 
   const handleDragEnd = (event: any) => {
     if (event.canceled) return
@@ -34,6 +32,11 @@ const Game = () => {
         setLetters((prev) => prev.filter((l) => l !== sourceId))
   }
 
+const validation = useMemo(() => {
+  return slots.map((slot, index) => slot === answer[index])
+}, [slots, answer])
+  
+
   return (
     <DragDropProvider onDragEnd={handleDragEnd}>
     <div className="w-full min-h-screen flex items-center justify-center bg-[#0b0f1a] px-4">
@@ -44,7 +47,7 @@ const Game = () => {
         {/* WORD SLOTS */}
         <div className="flex justify-center gap-3 mb-8">
             {slots.map((letter, i) => (
-              <Droppable key={i} id={`slot-${i}`}>
+              <Droppable key={i} id={`slot-${i}`} valid={validation[i]}>
                 {letter && <Draggable id={letter} />}
               </Droppable>
             ))}
