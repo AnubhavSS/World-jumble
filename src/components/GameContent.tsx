@@ -1,4 +1,4 @@
-import React,{useState,useMemo,useEffect}  from 'react'
+import {useState,useMemo,useEffect}  from 'react'
 import { words } from "../../data.js";
 import { useStore } from "../../store.js";
 import { DragDropProvider } from "@dnd-kit/react";
@@ -22,7 +22,7 @@ const GameContent = ({level}:{level:number}) => {
     const [letters, setLetters] = useState<string[]>(
       () => currentWord.letters
     )
-    console.log(letters,slots)
+ 
     const answer = currentWord.answer.split("")
     
       const handleDragEnd = (event: any) => {
@@ -109,7 +109,7 @@ useEffect(() => {
 
           {isCorrect && (
             <SplitText
-              text="Well done! On to the next word!"
+              text={level < 2 ? `Well done! On to the next word!` : "You've completed all levels!"}
               className="text-2xl font-semibold text-center"
               delay={50}
               duration={1.25}

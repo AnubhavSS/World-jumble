@@ -1,0 +1,16 @@
+.neon-purple {
+    background-color: #C77DFF;
+  box-shadow:
+    0 0 5px #C77DFF,
+    0 0 10px #C77DFF,
+    0 0 20px #9D4EDD,
+    0 0 40px #9D4EDD;
+}
+
+.neon-red {
+  text-shadow:
+    0 0 5px #ff4d4d,
+    0 0 10px #ff4d4d,
+    0 0 20px #ff0000,
+    0 0 40px #ff0000;
+}

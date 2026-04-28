@@ -1,14 +1,34 @@
-import React, { useState, useEffect } from 'react'
-import Counter from '../Counter/Counter.jsx';
-import { useStore } from '../../../store.ts';
-import GradientText from '../GradientText/GradientText.jsx';
-import StarBorder from '../StarBorder/StarBorder.jsx';
+import  { useState, useEffect } from 'react'
+
+import { useStore, useScoreStore } from '../../../store.ts';
+
+import {words} from '../../../data.js';
+import CircularProgressBar from '../CircularProgressBar/CircularProgressBar.tsx';
+
 
 
 const Timer = () => {
   const {setTimeUp, isCorrect, level} = useStore()
+  const {addScore, resetStreak, incrementStreak, streak} = useScoreStore()
   
   const [time, setTime] = useState(60)
+
+  useEffect(() => {
+  if (isCorrect) {
+    const base = words[level]?.answer?.length * 10
+    const timeBonus = time * 2
+    const multiplier = Math.min(1 + streak * 0.2, 2)
+
+    const total = Math.floor((base + timeBonus) * multiplier)
+
+    addScore(total)
+    incrementStreak()
+  }
+
+  if (time === 0) {
+    resetStreak()
+  }
+}, [isCorrect, time])
 
 
 // ⏱️ ticking
@@ -34,17 +54,12 @@ useEffect(() => {
 }, [level])
 
   return (
-    <StarBorder
-  as="button"
-  thickness={4}
-  color="magenta"
-  speed="3s"
-  className=" flex items-center justify-center 
-             bg-transparent"
->
+   
   <div className="flex flex-col bg-transparent items-center justify-center">
+
+    <CircularProgressBar />
     
-    <Counter
+    {/* <Counter
       value={time}
       places={[10, 1]}
       fontSize={80}
@@ -53,19 +68,11 @@ useEffect(() => {
       textColor="white"
       fontWeight={900}
       digitPlaceHolders={false}
-    />
+    /> */}
 
-    <GradientText
-      colors={["#5227FF", "#FF9FFC", "#B497CF"]}
-      animationSpeed={3}
-      showBorder={false}
-      className="text-sm font-bold mt-1"
-    >
-      Seconds Remaining
-    </GradientText>
 
   </div>
-</StarBorder>
+
   )
 }
 

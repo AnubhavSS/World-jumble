@@ -34,3 +34,9 @@
   display: inline-block;
   text-align: center;
 }
+
+@media screen and (max-width: 768px) {
+  .shuffle-parent {
+    font-size: 2rem;
+  }
+}

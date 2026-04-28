@@ -24,3 +24,25 @@ export const useStore = create<Store>((set) => ({
   setIsCorrect: (value) => set({ isCorrect: value }),
   setTimeUp: (value) => set({ timeUp: value }),
 }))
+
+
+type Score={
+score: number
+  streak: number
+  addScore: (points: number) => void
+  resetStreak: () => void
+  incrementStreak: () => void
+}
+
+export const useScoreStore = create<Score>((set) => ({
+  score: 0,
+  streak: 0,
+
+  addScore: (points) =>
+    set((s) => ({ score: s.score + points })),
+
+  incrementStreak: () =>
+    set((s) => ({ streak: s.streak + 1 })),
+
+  resetStreak: () => set({ streak: 0 }),
+}))

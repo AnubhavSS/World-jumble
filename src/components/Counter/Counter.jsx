@@ -116,10 +116,10 @@ export default function Counter({
       </span>
       <span className="gradient-container">
         <span className="top-gradient" style={topGradientStyle ? topGradientStyle : defaultTopGradientStyle}></span>
-        <span
+        {/* <span
           className="bottom-gradient"
           style={bottomGradientStyle ? bottomGradientStyle : defaultBottomGradientStyle}
-        ></span>
+        ></span> */}
       </span>
     </span>
   );

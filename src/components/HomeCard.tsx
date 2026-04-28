@@ -1,7 +1,9 @@
-import React from 'react'
+
 import BorderGlow from './BorderGlow/BorderGlow.jsx'
-import Shuffle from './Shuffle/Shuffle.jsx'
-import {GlowButton} from './ui/GlowButton.js'
+import 
+Shuffle from './Shuffle/Shuffle.jsx'
+import StarBorder from './StarBorder/StarBorder.jsx'
+
 import { useLocation } from 'wouter'
 
 const HomeCard = () => {
@@ -13,7 +15,7 @@ const handleClick = () => {
 }
   return (
     
-    <div className="absolute inset-0 flex items-center justify-center">
+    <div className="absolute inset-0 flex items-center justify-center overflow-hidden">
             <BorderGlow
         edgeSensitivity={30}
         glowColor="40 80 80"
@@ -26,7 +28,7 @@ const handleClick = () => {
         colors={["#c084fc", "#f472b6", "#38bdf8"]}
       >
         {/* CARD */}
-        <div className="w-[35vw] p-8 text-center text-white">
+        <div className="w-[90vw] lg:w-[40vw] p-8 text-center text-white ">
           <Shuffle
   text="Jumble Words"
   shuffleDirection="up"
@@ -41,17 +43,25 @@ const handleClick = () => {
   respectReducedMotion={true}
   loop={false}
   loopDelay={0}
-  className="tracking-wider"
+  className="text-sm sm:text-lg"
+  
   
 />
           
           <p className="text-sm text-gray-300 leading-6">
             Unscramble the chaos. Find the word.
           </p>
-
-         <GlowButton onClick={handleClick}>
+ <StarBorder
+  as="button"
+  className="mt-4"
+  color="magenta"
+  speed="5s"
+>
+ <button onClick={handleClick} className='cursor-pointer'>
   Start Game
-</GlowButton>
+</button>
+</StarBorder>
+      
         </div>
 
       </BorderGlow>
