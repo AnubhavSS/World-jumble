@@ -4,13 +4,14 @@ import MagicRings from "../components/MagicRings/MagicRings.jsx";
 import CountUp from "../components/CountUp/CountUp.jsx";
 import Timer from "../components/ui/Timer.jsx";
 import GameLayout from "../components/layouts/GameLayout.tsx";
-import { useStore, useScoreStore } from "../../store.ts";
+import { useStore, useScoreStore,  } from "../../store.ts";
 
 import { useEffect, useRef } from "react";
 
 const Game = () => {
   const { isCorrect, timeUp, level, nextLevel } = useStore();
   const { score } = useScoreStore();
+ 
 const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {

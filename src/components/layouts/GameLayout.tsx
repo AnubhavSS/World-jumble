@@ -3,7 +3,7 @@ import Galaxy from '../Galaxy/Galaxy.jsx'
 
 const GameLayout = ({children}: {children: React.ReactNode}) => {
   return (
-    <div className="relative w-full h-screen z-0">
+    <div className="relative w-full h-screen z-0 overflow-hidden">
       <Galaxy
         mouseRepulsion={false}
         mouseInteraction

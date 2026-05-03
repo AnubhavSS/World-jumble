@@ -1,6 +1,6 @@
 import {useState,useMemo,useEffect}  from 'react'
 import { words } from "../../data.js";
-import { useStore } from "../../store.js";
+import { useStore, useWordsStore } from "../../store.js";
 import { DragDropProvider } from "@dnd-kit/react";
 import Droppable from "../components/jumble/Droppable.tsx";
 import Draggable from "../components/jumble/Draggable.tsx";
@@ -11,9 +11,10 @@ import SplitText from "../components/SplitText/SplitText.jsx";
 const GameContent = ({level}:{level:number}) => {
   
   const {setIsCorrect, } = useStore()
+  const {difficulty} = useWordsStore()
 
        
-      const currentWord = words[level]
+      const currentWord = words?.[difficulty][level]
      
     const [slots, setSlots] = useState<string[]>(
       () => Array(currentWord.letters.length).fill("")

@@ -1,12 +1,27 @@
-
+;
 import BorderGlow from './BorderGlow/BorderGlow.jsx'
-import 
-Shuffle from './Shuffle/Shuffle.jsx'
+import Shuffle from './Shuffle/Shuffle.jsx'
 import StarBorder from './StarBorder/StarBorder.jsx'
-
 import { useLocation } from 'wouter'
+import { useEffect } from 'react'
+import { fetchWords } from '../services.js'
+import { useWordsStore } from '../../store.ts'
+import Modal from './Modal.tsx'
+
+
 
 const HomeCard = () => {
+// const { setWords } = useWordsStore();
+
+// useEffect(() => {
+//   const main = async () => {
+//     const data = await fetchWords(); // or selected difficulty
+//     // setWords(JSON.parse(data));
+//     console.log(data);
+//   };
+
+//   main();
+// }, []);
 
     const [_, setLocation] = useLocation()
 
@@ -41,8 +56,8 @@ const handleClick = () => {
   triggerOnce={true}
   triggerOnHover
   respectReducedMotion={true}
-  loop={false}
-  loopDelay={0}
+  loop={true}
+  loopDelay={3}
   className="text-sm sm:text-lg"
   
   
@@ -51,16 +66,8 @@ const handleClick = () => {
           <p className="text-sm text-gray-300 leading-6">
             Unscramble the chaos. Find the word.
           </p>
- <StarBorder
-  as="button"
-  className="mt-4"
-  color="magenta"
-  speed="5s"
->
- <button onClick={handleClick} className='cursor-pointer'>
-  Start Game
-</button>
-</StarBorder>
+
+          <Modal /> 
       
         </div>
 

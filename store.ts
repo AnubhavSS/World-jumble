@@ -46,3 +46,18 @@ export const useScoreStore = create<Score>((set) => ({
 
   resetStreak: () => set({ streak: 0 }),
 }))
+
+
+type Words = {
+  words: { answer: string, letters: string[], difficulty: string }[]
+  setWords: (words: { answer: string, letters: string[], difficulty: string }[]) => void
+  difficulty: string 
+  setDifficulty: (value: string) => void
+}
+
+export const useWordsStore = create<Words>((set) => ({
+ words: [],
+  setWords: (words) => set({ words }),
+ difficulty: "Easy",
+ setDifficulty: (value) => set({ difficulty: value }),
+}))
