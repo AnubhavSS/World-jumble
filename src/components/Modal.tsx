@@ -1,11 +1,11 @@
-import React, { useState } from 'react'
-import { Dialog, DialogTrigger, DialogContent, DialogTitle } from './ui/dialog'
+import  { useState } from 'react'
+import { Dialog, DialogTrigger, DialogContent, } from './ui/dialog'
 import { useWordsStore } from '../../store.ts'
 import { useLocation } from 'wouter'
 
 
 import StarBorder from './StarBorder/StarBorder.jsx'
-import { VisuallyHidden } from 'radix-ui'
+
 
 const difficulties = [
   {
@@ -40,7 +40,7 @@ const Modal = () => {
      const { setDifficulty } = useWordsStore();
      const [_, setLocation] = useLocation()
       
-  const handleSelect = (level) => {
+  const handleSelect = (level:string) => {
     setSelected(level);
     setDifficulty(level);
     setTimeout(() => {

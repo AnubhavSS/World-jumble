@@ -14,7 +14,7 @@ const GameContent = ({level}:{level:number}) => {
   const {difficulty} = useWordsStore()
 
        
-      const currentWord = words?.[difficulty][level]
+     const currentWord = words[difficulty as keyof typeof words][level];
      
     const [slots, setSlots] = useState<string[]>(
       () => Array(currentWord.letters.length).fill("")

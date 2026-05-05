@@ -1,33 +1,12 @@
-;
+
 import BorderGlow from './BorderGlow/BorderGlow.jsx'
 import Shuffle from './Shuffle/Shuffle.jsx'
-import StarBorder from './StarBorder/StarBorder.jsx'
-import { useLocation } from 'wouter'
-import { useEffect } from 'react'
-import { fetchWords } from '../services.js'
-import { useWordsStore } from '../../store.ts'
 import Modal from './Modal.tsx'
 
 
 
 const HomeCard = () => {
-// const { setWords } = useWordsStore();
 
-// useEffect(() => {
-//   const main = async () => {
-//     const data = await fetchWords(); // or selected difficulty
-//     // setWords(JSON.parse(data));
-//     console.log(data);
-//   };
-
-//   main();
-// }, []);
-
-    const [_, setLocation] = useLocation()
-
-const handleClick = () => {
-  setLocation("/game")
-}
   return (
     
     <div className="absolute inset-0 flex items-center justify-center overflow-hidden">

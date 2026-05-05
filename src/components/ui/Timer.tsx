@@ -1,6 +1,6 @@
 import  { useState, useEffect } from 'react'
 
-import { useStore, useScoreStore } from '../../../store.ts';
+import { useStore, useScoreStore,useWordsStore } from '../../../store.ts';
 
 import {words} from '../../../data.js';
 import CircularProgressBar from '../CircularProgressBar/CircularProgressBar.tsx';
@@ -10,12 +10,12 @@ import CircularProgressBar from '../CircularProgressBar/CircularProgressBar.tsx'
 const Timer = () => {
   const {setTimeUp, isCorrect, level} = useStore()
   const {addScore, resetStreak, incrementStreak, streak} = useScoreStore()
-  
-  const [time, setTime] = useState(60)
+  const {difficulty} = useWordsStore()
+  const [time, setTime] = useState<number>(60)
 
   useEffect(() => {
   if (isCorrect) {
-    const base = words[level]?.answer?.length * 10
+    const base = words[difficulty as keyof typeof words][level]?.answer?.length * 10
     const timeBonus = time * 2
     const multiplier = Math.min(1 + streak * 0.2, 2)
 
